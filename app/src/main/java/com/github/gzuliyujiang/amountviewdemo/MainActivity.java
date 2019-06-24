@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        NumberAddSubtractLayout addSubButton = findViewById(R.id.number_addsubtract_button_custom);
+        NumberAddSubtractLayout addSubButton = findViewById(R.id.number_addsubtract_button_custom_1);
         addSubButton.setTotal(9999);
         addSubButton.setLimit(2, 999);
         addSubButton.setOnWarnListener(new NumberAddSubtractLayout.OnWarnListener() {

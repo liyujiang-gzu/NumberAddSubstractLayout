@@ -13,7 +13,7 @@
         android:layout_height="40dp" />
 
     <com.github.gzuliyujiang.widget.NumberAddSubtractLayout
-        android:id="@+id/number_addsubtract_button_custom"
+        android:id="@+id/number_addsubtract_button_custom_1"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
@@ -31,5 +31,24 @@
         app:editable="true"
         app:numberTextSize="25sp"
         app:numberWidth="130dp" />
+
+    <com.github.gzuliyujiang.widget.NumberAddSubtractLayout
+        android:id="@+id/number_addsubtract_button_custom_2"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        app:borderDrawable="@drawable/transparent"
+        app:buttonLeftDisableTextColor="#FFCDCDCD"
+        app:buttonLeftDrawable="@drawable/demo_bg_round"
+        app:buttonLeftNormalTextColor="#FF595959"
+        app:buttonRightDisableTextColor="#FFCDCDCD"
+        app:buttonRightDrawable="@drawable/demo_bg_round"
+        app:buttonRightNormalTextColor="#FF595959"
+        app:buttonTextSize="13sp"
+        app:buttonWidth="28dp"
+        app:dividerDrawable="@drawable/transparent"
+        app:numberTextColor="#FF595959"
+        app:numberTextSize="13sp"
+        app:numberWidth="34dp" />
 
 </LinearLayout>
