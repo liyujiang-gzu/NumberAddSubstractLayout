@@ -19,8 +19,10 @@
         <attr name="buttonRightDrawable" format="reference" />
         <attr name="buttonWidth" format="dimension" />
         <attr name="buttonTextSize" format="dimension" />
-        <attr name="buttonNormalTextColor" format="color" />
-        <attr name="buttonDisableTextColor" format="color" />
+        <attr name="buttonLeftNormalTextColor" format="color" />
+        <attr name="buttonLeftDisableTextColor" format="color" />
+        <attr name="buttonRightNormalTextColor" format="color" />
+        <attr name="buttonRightDisableTextColor" format="color" />
         <attr name="numberWidth" format="dimension" />
         <attr name="numberTextSize" format="dimension" />
         <attr name="numberTextColor" format="color" />

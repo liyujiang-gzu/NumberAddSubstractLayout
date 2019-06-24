@@ -28,7 +28,7 @@ import java.util.Locale;
  * @date 2019/5/7 17:50
  */
 @SuppressWarnings({"unused", "UnusedReturnValue"})
-public class NumberAddSubtractButton extends LinearLayout implements View.OnClickListener, TextWatcher {
+public class NumberAddSubtractLayout extends LinearLayout implements View.OnClickListener, TextWatcher {
     private static final int NOT_SET = -1;
 
     private int total = Integer.MAX_VALUE;
@@ -40,14 +40,14 @@ public class NumberAddSubtractButton extends LinearLayout implements View.OnClic
     private EditText etNumber;
     private OnWarnListener mOnWarnListener;
 
-    private int buttonNormalTextColor;
-    private int buttonDisableTextColor;
+    private int buttonLeftNormalTextColor, buttonLeftDisableTextColor;
+    private int buttonRightNormalTextColor, buttonRightDisableTextColor;
 
-    public NumberAddSubtractButton(Context context) {
+    public NumberAddSubtractLayout(Context context) {
         this(context, null);
     }
 
-    public NumberAddSubtractButton(Context context, AttributeSet attrs) {
+    public NumberAddSubtractLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
@@ -69,25 +69,27 @@ public class NumberAddSubtractButton extends LinearLayout implements View.OnClic
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NumberAddSubtractButton);
-        boolean editable = typedArray.getBoolean(R.styleable.NumberAddSubtractButton_editable, true);
-        int defaultNumber = typedArray.getInteger(R.styleable.NumberAddSubtractButton_defaultNumber, minLimit);
-        int buttonWidth = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractButton_buttonWidth, NOT_SET);
-        int buttonTextSize = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractButton_buttonTextSize, NOT_SET);
-        buttonNormalTextColor = typedArray.getColor(R.styleable.NumberAddSubtractButton_buttonNormalTextColor, 0xFF333333);
-        buttonDisableTextColor = typedArray.getColor(R.styleable.NumberAddSubtractButton_buttonDisableTextColor, 0xFFDCDCDC);
-        int numberWidth = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractButton_numberWidth, NOT_SET);
-        int numberTextSize = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractButton_numberTextSize, NOT_SET);
-        int numberTextColor = typedArray.getColor(R.styleable.NumberAddSubtractButton_numberTextColor, 0xFF333333);
-        int borderDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractButton_borderDrawable, NOT_SET);
-        int dividerDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractButton_dividerDrawable, NOT_SET);
-        int buttonLeftDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractButton_buttonLeftDrawable, NOT_SET);
-        int buttonRightDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractButton_buttonRightDrawable, NOT_SET);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NumberAddSubtractLayout);
+        boolean editable = typedArray.getBoolean(R.styleable.NumberAddSubtractLayout_editable, true);
+        int defaultNumber = typedArray.getInteger(R.styleable.NumberAddSubtractLayout_defaultNumber, minLimit);
+        int buttonWidth = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractLayout_buttonWidth, NOT_SET);
+        int buttonTextSize = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractLayout_buttonTextSize, NOT_SET);
+        buttonLeftNormalTextColor = typedArray.getColor(R.styleable.NumberAddSubtractLayout_buttonLeftNormalTextColor, 0xFF333333);
+        buttonLeftDisableTextColor = typedArray.getColor(R.styleable.NumberAddSubtractLayout_buttonLeftDisableTextColor, 0xFFDCDCDC);
+        buttonRightNormalTextColor = typedArray.getColor(R.styleable.NumberAddSubtractLayout_buttonRightNormalTextColor, 0xFF333333);
+        buttonRightDisableTextColor = typedArray.getColor(R.styleable.NumberAddSubtractLayout_buttonRightDisableTextColor, 0xFFDCDCDC);
+        int numberWidth = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractLayout_numberWidth, NOT_SET);
+        int numberTextSize = typedArray.getDimensionPixelSize(R.styleable.NumberAddSubtractLayout_numberTextSize, NOT_SET);
+        int numberTextColor = typedArray.getColor(R.styleable.NumberAddSubtractLayout_numberTextColor, 0xFF333333);
+        int borderDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractLayout_borderDrawable, NOT_SET);
+        int dividerDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractLayout_dividerDrawable, NOT_SET);
+        int buttonLeftDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractLayout_buttonLeftDrawable, NOT_SET);
+        int buttonRightDrawableRes = typedArray.getResourceId(R.styleable.NumberAddSubtractLayout_buttonRightDrawable, NOT_SET);
         typedArray.recycle();
 
         setEditable(editable);
-        tvSubtract.setTextColor(buttonDisableTextColor);
-        tvAdd.setTextColor(buttonDisableTextColor);
+        tvSubtract.setTextColor(buttonLeftDisableTextColor);
+        tvAdd.setTextColor(buttonRightDisableTextColor);
         etNumber.setTextColor(numberTextColor);
         if (buttonTextSize > 0) {
             tvSubtract.setTextSize(TypedValue.COMPLEX_UNIT_PX, buttonTextSize);
@@ -166,19 +168,19 @@ public class NumberAddSubtractButton extends LinearLayout implements View.OnClic
     private void onNumberInput() {
         Integer number = getCurrentNumber();
         if (number == null) {
-            tvSubtract.setTextColor(buttonDisableTextColor);
-            tvAdd.setTextColor(buttonDisableTextColor);
+            tvSubtract.setTextColor(buttonLeftDisableTextColor);
+            tvAdd.setTextColor(buttonRightDisableTextColor);
             return;
         }
         if (number <= minLimit) {
-            tvSubtract.setTextColor(buttonDisableTextColor);
+            tvSubtract.setTextColor(buttonLeftDisableTextColor);
         } else {
-            tvSubtract.setTextColor(buttonNormalTextColor);
+            tvSubtract.setTextColor(buttonLeftNormalTextColor);
         }
         if (number >= maxLimit) {
-            tvAdd.setTextColor(buttonDisableTextColor);
+            tvAdd.setTextColor(buttonRightDisableTextColor);
         } else {
-            tvAdd.setTextColor(buttonNormalTextColor);
+            tvAdd.setTextColor(buttonRightNormalTextColor);
         }
         if (number < minLimit) {
             changeInputText(minLimit);
@@ -238,7 +240,7 @@ public class NumberAddSubtractButton extends LinearLayout implements View.OnClic
         }
     }
 
-    public NumberAddSubtractButton setCurrentNumber(int number) {
+    public NumberAddSubtractLayout setCurrentNumber(int number) {
         if (number < minLimit) {
             changeInputText(minLimit);
             return this;
@@ -251,7 +253,7 @@ public class NumberAddSubtractButton extends LinearLayout implements View.OnClic
         return total;
     }
 
-    public NumberAddSubtractButton setTotal(int total) {
+    public NumberAddSubtractLayout setTotal(int total) {
         this.total = total;
         return this;
     }
@@ -264,13 +266,13 @@ public class NumberAddSubtractButton extends LinearLayout implements View.OnClic
         return maxLimit;
     }
 
-    public NumberAddSubtractButton setLimit(int min, int max) {
+    public NumberAddSubtractLayout setLimit(int min, int max) {
         this.minLimit = Math.min(min, max);
         this.maxLimit = Math.max(min, max);
         return this;
     }
 
-    public NumberAddSubtractButton setOnWarnListener(OnWarnListener onWarnListener) {
+    public NumberAddSubtractLayout setOnWarnListener(OnWarnListener onWarnListener) {
         mOnWarnListener = onWarnListener;
         return this;
     }
