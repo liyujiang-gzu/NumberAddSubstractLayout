@@ -2,12 +2,11 @@
 
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven{ url 'https://maven.aliyun.com/repository/public'}
+        maven { url 'https://maven.aliyun.com/repositories/jcenter' }
+        maven { url 'https://maven.aliyun.com/repositories/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
         jcenter()
-        maven {
-            url 'https://dl.google.com/dl/android/maven2/'
-        }
         google()
     }
     dependencies {
@@ -20,12 +19,11 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven{ url 'https://maven.aliyun.com/repository/public'}
+        maven { url 'https://maven.aliyun.com/repositories/jcenter' }
+        maven { url 'https://maven.aliyun.com/repositories/google' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
         jcenter()
-        maven {
-            url 'https://dl.google.com/dl/android/maven2/'
-        }
         google()
     }
 }

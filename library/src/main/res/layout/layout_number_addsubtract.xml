@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_number_container"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_number_addsubtract_border"
+    android:divider="@drawable/bg_number_addsubtract_divider"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    android:weightSum="4">
+
+    <TextView
+        android:id="@+id/tv_number_subtract"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:background="@drawable/bg_number_addsubtract_left"
+        android:gravity="center"
+        android:minWidth="40dp"
+        android:text="-"
+        android:textColor="#FFCDCDCD"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_number_result"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2.0"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:digits="0123456789"
+        android:focusable="true"
+        android:gravity="center"
+        android:hint=""
+        android:inputType="number"
+        android:minWidth="70dp"
+        android:paddingLeft="6dp"
+        android:paddingTop="4dp"
+        android:paddingRight="6dp"
+        android:paddingBottom="4dp"
+        android:singleLine="true"
+        android:textColor="#FF333333"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/tv_number_add"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:background="@drawable/bg_number_addsubtract_right"
+        android:gravity="center"
+        android:minWidth="40dp"
+        android:text="+"
+        android:textColor="#FFCCCCCC"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

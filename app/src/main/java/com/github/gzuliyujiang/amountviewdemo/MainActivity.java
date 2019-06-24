@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.github.gzuliyujiang.widget.NumberAddSubButton;
+import com.github.gzuliyujiang.widget.NumberAddSubtractButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        NumberAddSubButton amountView = findViewById(R.id.amount_view);
-        amountView.setTotal(999);
-        amountView.setLimit(2, 99);
-        amountView.setOnWarnListener(new NumberAddSubButton.OnWarnListener() {
+        NumberAddSubtractButton addSubButton = findViewById(R.id.number_addsubtract_button_custom);
+        addSubButton.setTotal(9999);
+        addSubButton.setLimit(2, 999);
+        addSubButton.setOnWarnListener(new NumberAddSubtractButton.OnWarnListener() {
             @Override
             public void onTotalWarning(int total) {
                 showToast("超过总库存" + total);
